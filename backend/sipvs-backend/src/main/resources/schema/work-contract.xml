@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workContract xmlns="http://example.com/work-contract">
+  <employee>
+    <name>bvchdshs</name>
+    <birthDate>44.44.4444</birthDate>
+    <adresa>bhjbhj</adresa>
+    <email>bhjbhj</email>
+    <phone>421777777777</phone>
+  </employee>
+  <company>
+    <companyName>bhjbhj</companyName>
+    <companyAdresa>bhjbhj</companyAdresa>
+    <contactInfo>bhjbh</contactInfo>
+  </company>
+  <job>
+    <positionTitle>bhjb</positionTitle>
+    <jobType>plný úväzok</jobType>
+    <placeOfWork>bhjbj</placeOfWork>
+    <startDate>33 Oktober 3322</startDate>
+    <salary>434</salary>
+  </job>
+  <duties>
+    <duty>[]</duty>
+  </duties>
+</workContract>

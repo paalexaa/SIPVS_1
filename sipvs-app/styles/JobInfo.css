@@ -1,0 +1,28 @@
+.JobInfo {
+    background-color: #ffffff0c;
+    border-radius: 8px;
+    padding: 1px 15px 5px;
+    margin-bottom: 20px;
+}
+
+.input-group select {
+  background-color: #2a2d4d;
+  color: #fff;
+  border: 1px;            
+  border-radius: 8px;      
+  padding: 10px 12px;
+  margin-left: 10px;     
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;     
+}
+
+.input-group select:focus {
+  box-shadow: 0 0 0 2px #8B46FF44;
+}
+
+.input-group option {
+  background-color: #2a2d4d;
+  color: #fff;
+}

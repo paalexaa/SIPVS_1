@@ -1,0 +1,49 @@
+.Section {
+    background-color: #ffffff0c;
+    border-radius: 8px;
+    padding: 1px 15px 5px;
+    margin-bottom: 20px;
+}
+
+.duty-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2a2d4d;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.duty-item .input-icon {
+  font-size: 16px;
+  color: #7b86aa;
+  flex-shrink: 0;
+}
+
+.duty-item input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: #ff4e4e;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 2px;
+  line-height: 1;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  color: #ff0000;
+  transform: scale(1.1);
+}
+
