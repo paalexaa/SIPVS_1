@@ -6,8 +6,11 @@ import JobInfo from '../components/JobInfo';
 import Section from '../components/Section';
 import CVDisplay from '../components/CVDisplay';
 
+import { signXmlFile } from "../src/sign";
+
 function App() {
   const [isEditing, setIsEditing] = useState(true);
+  const [isSigning, setIsSigning] = useState(false);
 
   const [name, setName] = useState('');
   const [birthDate, setBirthDate] = useState('');
@@ -51,10 +54,32 @@ function App() {
 
       setIsEditing(false);
     } catch (error) {
-      console.error("❌ Chyba pri odosielaní údajov:", error);
+      console.error("Chyba pri odosielaní údajov:", error);
       alert("Došlo k chybe pri spracovaní údajov.");
     }
   }
+
+  async function handleSign() {
+    try {
+      setIsSigning(true);
+
+      await fetch("http://localhost:8080/api/generate-files", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData),
+      });
+
+      await signXmlFile(userData);
+
+    } catch (error) {
+      console.error("Chyba pri podpise:", error);
+      alert("Došlo k chybe pri podpise dokumentu.");
+    } finally {
+      setIsSigning(false);
+    }
+  }
+
+
 
   function handleEdit() {
     setIsEditing(true); 
@@ -70,6 +95,9 @@ function App() {
           <JobInfo {...{positionTitle, setPositionTitle, jobType, setJobType, placeOfWork, setPlaceOfWork, startDate, setStartDate, salary, setSalary}} />
           <Section {...{duties, setDuties}} />
           <button type='submit'>Submit</button>
+          <button type='button' onClick={handleSign} className="btn-sign" disabled={isSigning}>
+            {isSigning ? 'Podpisujem...' : 'Podpísať'}
+          </button>
         </form>
         ) : (
           <CVDisplay data={userData} onEdit={handleEdit} />

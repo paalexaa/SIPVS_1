@@ -1,5 +1,7 @@
 package com.example.sipvs_backend.controller;
 
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,7 +11,7 @@ import com.example.sipvs_backend.model.WorkContract;
 import com.example.sipvs_backend.service.XmlService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5174/")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class FormController {
 
     private final XmlService xmlService;
@@ -25,8 +27,13 @@ public class FormController {
             return xmlService.transformXmlToHtml();
         } catch (Exception e) {
             e.printStackTrace();
-            return "<h2 style='color:red;'>❌ Chyba pri spracovaní údajov: " + e.getMessage() + "</h2>";
+            return "<h2 style='color:red;'> Chyba pri spracovaní údajov: " + e.getMessage() + "</h2>";
         }
+    }
+
+    @PostMapping("/api/generate-files")
+    public Map<String, String> generateFiles(@RequestBody WorkContract data) {
+        return xmlService.generateFilesForSigning(data);
     }
 }
 
