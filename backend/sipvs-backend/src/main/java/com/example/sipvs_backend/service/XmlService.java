@@ -3,7 +3,6 @@ package com.example.sipvs_backend.service;
 import com.example.sipvs_backend.model.WorkContract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.xml.XMLConstants;
 import javax.xml.transform.*;
 import javax.xml.transform.stream.StreamResult;
@@ -13,9 +12,11 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.*;
 
 @Service
 public class XmlService {
@@ -131,4 +132,17 @@ public class XmlService {
                 .replace("<", "&lt;")
                 .replace(">", "&gt;");
     }
+
+    public boolean uploadSigned(byte[] asiceBytes) {
+        try {
+            Path outputPath = Paths.get("src/main/resources/signed_documents/work-contract.asice");
+            Files.createDirectories(outputPath.getParent());
+            Files.write(outputPath, asiceBytes);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
+
